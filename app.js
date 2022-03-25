@@ -10,7 +10,8 @@ const authRouter = require("./routes/auth");
 const userRouter = require("./routes/user");
 const categoryRouter = require("./routes/category");
 const productRouter = require("./routes/product");
-
+const braintreeRouter = require("./routes/braintree");
+const orderRouter = require("./routes/order");
 // app
 const app = express();
 
@@ -31,6 +32,9 @@ app.use("/api", authRouter);
 app.use("/api", userRouter);
 app.use("/api", categoryRouter);
 app.use("/api", productRouter);
+app.use("/api", braintreeRouter);
+app.use("/api", orderRouter);
+
 
 
 app.use((req,res)=>{

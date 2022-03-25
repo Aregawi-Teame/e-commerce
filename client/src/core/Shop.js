@@ -109,8 +109,9 @@ const handlePrice = value =>{
                     <h2  className="mb-4">Products</h2>
                     <div className="row">
                         {filteredResult.map((product, i)=>(
-
-                                <Card key={i} product={product}/>
+                            <div key={i} className="col-4 mb-3">
+                                <Card product={product}/>
+                            </div>
        
                         ))}
                     </div>

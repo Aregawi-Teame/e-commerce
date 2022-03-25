@@ -13,6 +13,7 @@
   "author": "Aregawi T. Arefe",
   "license": "ISC",
   "dependencies": {
+    "braintree": "^3.10.0",
     "concurrently": "^7.0.0",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
