@@ -46,7 +46,7 @@ const Checkout = ({products, setRun = f=>f, run=undefined}) =>{
             )
         );
     };
-
+    let deliveryAddress = data.address;
     const buy = () => {
         setData({loading: true});
         // send the nonce to server
@@ -71,14 +71,14 @@ const Checkout = ({products, setRun = f=>f, run=undefined}) =>{
                    products: products,
                    transaction_id: response.transaction.id,
                    amount: response.transaction.amount,
-                   address: data.address
+                   address: deliveryAddress
                }
                createOrder(userId, token, createOrderData)
                // empty cart
                setRun(!run);// run useEffect in parent Cart
                emptyCart(()=>{
                     console.log("payment success and empty cart");
-                    setData({loading: false});
+                    setData({loading: false, success: true});
                });
             })
             .catch(error=>{
@@ -93,7 +93,7 @@ const Checkout = ({products, setRun = f=>f, run=undefined}) =>{
     };
 
     const showLoading = (loading)=>(
-        loading && <h2>Loading...</h2>
+        loading && <h2 className="text-warning fs-2">Loading...</h2>
     );
     const handleAddress = event=>{
         setData({...data, address:event.target.value})
@@ -130,7 +130,7 @@ const Checkout = ({products, setRun = f=>f, run=undefined}) =>{
         </div>
     );
     const showSuccess = success =>(
-        <div className="alert alert-inso" style={{display: success ? '' : "none"}}>
+        <div className="alert alert-info" style={{display: success ? '' : "none"}}>
             Thanks! Your payment was successful!    
         </div>
     );
